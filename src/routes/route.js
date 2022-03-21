@@ -1,6 +1,6 @@
 const express = require('express');
 const { Router } = require('express');
-const collageController = require('../Controller/collageController')
+const collageController = require('../Controller/collegeController')
 const internController = require('../Controller/internController')
 const router = express.Router();
 

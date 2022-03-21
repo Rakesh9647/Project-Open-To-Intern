@@ -26,6 +26,9 @@ const Intern = async function (req, res) {
 const getDetail = async function (req, res) {
     try {
             let coll_name = req.query.collegeName
+            if(!coll_name){
+                return res.status(400).send({status:false,  msg: "college name must be persent"})
+            }
             let data = await collegeModel.findOne({ name: coll_name })
             const C_id = data._id
             if (!data) {
