@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const mongoose = require('mongoose')
 
 mongoose.connect("mongodb+srv://arnabbiswas_14:arnabbiswas@cluster0.b95gv.mongodb.net/group-36-Database?retryWrites=true&w=majority", {useNewUrlParser: true , useUnifiedTopology: true,useCreateIndex: true,useFindAndModify: false})
-    .then(() => console.log('mongodb running on 27017'))
+    .then(() => console.log('mongodb connected'))
     .catch(err => console.log(err))
 
 app.use('/functionup', route);
