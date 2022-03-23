@@ -10,6 +10,8 @@ const Intern = async function (req, res) {
         let data = req.body
         let collegeId = req.body.collegeId
         if (Object.keys(data).length == 0) return res.status(400).send({ status:false ,message:'The request is not valid as the data are required.'})
+        if(!collegeId) return res.status(400).send({ status:false ,message:'collegeId is required.'})
+        if(!data.name) return res.status(400).send({ status:false ,message:'name is required.'})
         let collegeDetail = await collegeModel.findById(collegeId)
         if (!collegeDetail) return res.status(404).send({status:false, message:'The request is not valid as no intern is present with  given collage id'})
         let createNewIntern = await internModel.create(data)
@@ -29,7 +31,7 @@ const getDetail = async function (req, res) {
         }
         let dataOne = await collegeModel.findOne({ name: coll_name })
         if (!dataOne) {
-           return res.status(403).send({ status: false, message: "collage is not present" });
+           return res.status(404).send({ status: false, message: "collage is not present" });
         }
         let data = JSON.parse(JSON.stringify(dataOne))
         const C_id = dataOne._id
